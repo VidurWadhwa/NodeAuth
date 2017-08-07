@@ -1,0 +1,22 @@
+{
+  "name": "meanstack",
+  "version": "1.0.0",
+  "description": "MEAN auth app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "mongoose": "^4.10.8",
+    "passport": "*",
+    "passport-jwt": "*"
+  },
+  "author": "Vidur Wadhwa",
+  "license": "ISC"
+}
