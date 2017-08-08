@@ -6,8 +6,21 @@ var path = require('path');
 var passport = require('passport');
 var users = require('./routes/users');
 const config = require('./config/database');
-
-mongoose.connect(config.database, function(err) {
+var option = {
+    server: {
+        socketOptions: {
+            keepAlive: 300000,
+            connectTimeoutMS: 30000
+        }
+    },
+    replset: {
+        socketOptions: {
+            keepAlive: 300000,
+            connectTimeoutMS: 30000
+        }
+    }
+};
+mongoose.connect(config.database, option, function(err) {
 	if(err) {
 		console.log(err);
 	} else {
@@ -24,6 +37,10 @@ var app = express();
 app.use(express.static(path.join(__dirname, 'client')));
 
 app.use(bodyParser.json());
+
+app.use(passport.initialize());
+app.use(passport.session());
+require('./config/passport')(passport);
 
 const port = 3000;
 
